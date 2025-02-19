@@ -46,11 +46,18 @@ function reversePasscode(passcode){
 }
 
 function storePassword(name, passcode1, passcode2){
-    if(!validatePassword(passcode1, passcode2)){
-        console.log("Password does not match password specifications");
-        return false;
+    var newPasscode = '';
+    if(!validatePassword(passcode1, passcode2))
+        newPasscode = passcode1;
+    else 
+        newPasscode = reversePasscode(passcode1);
+    
+    var profile ={
+        name:name,
+        newPassword: newPasscode,
     }
-    var newPasscode = reversePasscode(passcode1);
+
+    return profile;
 }
 
-storePassword("John", "Pass1234", "Pass1234")
+console.log(storePassword("John", "Pass123", "Pass12345"))
