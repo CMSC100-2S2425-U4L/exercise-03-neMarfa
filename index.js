@@ -38,9 +38,11 @@ function validatePassword(firstPassword, secondPassword){
 }
 
 function reversePasscode(passcode){
+    var newPasscode = ''
     for(let i = (passcode.length - 1); i >= 0; i--){
-
+        newPasscode = newPasscode+passcode[i];
     }
+    return newPasscode;
 }
 
 function storePassword(name, passcode1, passcode2){
@@ -48,7 +50,7 @@ function storePassword(name, passcode1, passcode2){
         console.log("Password does not match password specifications");
         return false;
     }
-    console.log("valid");
+    var newPasscode = reversePasscode(passcode1);
 }
 
 storePassword("John", "Pass1234", "Pass1234")
